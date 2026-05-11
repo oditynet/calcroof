@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:gravity="center_horizontal">
+
+        <!-- Заголовок -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Калькулятор запила стропила"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#333333"
+            android:layout_marginBottom="16dp" />
+
+        <!-- PNG фотография -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginBottom="8dp">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:background="#FFFFFF"
+                android:contentDescription="Фотография кровли"
+                android:padding="4dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/roof_image" />
+        </FrameLayout>
+
+        <!-- Кнопки управления изображением -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="16dp"
+            android:background="#E8E8E8"
+            android:padding="8dp">
+
+            <!-- Уменьшить -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_marginEnd="4dp">
+
+                <Button
+                    android:id="@+id/zoomOutButton"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:text="-"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:backgroundTint="#FFFFFF"
+                    android:layout_marginBottom="2dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Уменьш."
+                    android:textSize="9sp"
+                    android:textColor="#333333" />
+            </LinearLayout>
+
+            <!-- Влево -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_marginEnd="4dp">
+
+                <Button
+                    android:id="@+id/moveLeftButton"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:text="◄"
+                    android:textSize="18sp"
+                    android:textColor="#000000"
+                    android:backgroundTint="#FFFFFF"
+                    android:layout_marginBottom="2dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Влево"
+                    android:textSize="9sp"
+                    android:textColor="#333333" />
+            </LinearLayout>
+
+            <!-- Вверх -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_marginEnd="4dp">
+
+                <Button
+                    android:id="@+id/moveUpButton"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:text="▲"
+                    android:textSize="18sp"
+                    android:textColor="#000000"
+                    android:backgroundTint="#FFFFFF"
+                    android:layout_marginBottom="2dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Вверх"
+                    android:textSize="9sp"
+                    android:textColor="#333333" />
+            </LinearLayout>
+
+            <!-- Сброс -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_marginEnd="4dp">
+
+                <Button
+                    android:id="@+id/resetImageButton"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:text="↺"
+                    android:textSize="22sp"
+                    android:textColor="#000000"
+                    android:backgroundTint="#FFFFFF"
+                    android:layout_marginBottom="2dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Сброс"
+                    android:textSize="9sp"
+                    android:textColor="#333333" />
+            </LinearLayout>
+
+            <!-- Вниз -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_marginEnd="4dp">
+
+                <Button
+                    android:id="@+id/moveDownButton"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:text="▼"
+                    android:textSize="18sp"
+                    android:textColor="#000000"
+                    android:backgroundTint="#FFFFFF"
+                    android:layout_marginBottom="2dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Вниз"
+                    android:textSize="9sp"
+                    android:textColor="#333333" />
+            </LinearLayout>
+
+            <!-- Вправо -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_marginEnd="4dp">
+
+                <Button
+                    android:id="@+id/moveRightButton"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:text="►"
+                    android:textSize="18sp"
+                    android:textColor="#000000"
+                    android:backgroundTint="#FFFFFF"
+                    android:layout_marginBottom="2dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Вправо"
+                    android:textSize="9sp"
+                    android:textColor="#333333" />
+            </LinearLayout>
+
+            <!-- Увеличить -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/zoomInButton"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:text="+"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:backgroundTint="#FFFFFF"
+                    android:layout_marginBottom="2dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Увелич."
+                    android:textSize="9sp"
+                    android:textColor="#333333" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Строка 1: Угол ската и C -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="6dp">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="8dp"
+                app:boxBackgroundMode="outline"
+                app:hintTextColor="#1976D2"
+                app:boxStrokeColor="#1976D2">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/angleInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Угол ската кровли"
+                    android:inputType="numberDecimal"
+                    android:padding="12dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:boxBackgroundMode="outline"
+                app:hintTextColor="#1976D2"
+                app:boxStrokeColor="#1976D2">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/inputC"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="C (до мауэрлата)"
+                    android:inputType="numberDecimal"
+                    android:padding="12dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+        <!-- Строка 2: ширина столба и H -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="6dp">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="8dp"
+                app:boxBackgroundMode="outline"
+                app:hintTextColor="#1976D2"
+                app:boxStrokeColor="#1976D2">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/inputA"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="ширина столба ="
+                    android:inputType="numberDecimal"
+                    android:padding="12dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:boxBackgroundMode="outline"
+                app:hintTextColor="#1976D2"
+                app:boxStrokeColor="#1976D2">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/inputH"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="H (высота столба)"
+                    android:inputType="numberDecimal"
+                    android:padding="12dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+        <!-- Поле ввода b -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            app:boxBackgroundMode="outline"
+            app:hintTextColor="#1976D2"
+            app:boxStrokeColor="#1976D2">
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Кнопка Посчитать -->
+        <Button
+            android:id="@+id/calculateButton"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="Посчитать"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:backgroundTint="#1976D2"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="14dp" />
+
+        <!-- Карточка с результатами -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            android:layout_marginBottom="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:background="#FFFFFF">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Результаты:"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#333333"
+                    android:layout_marginBottom="12dp" />
+
+                <TextView
+                    android:id="@+id/result1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1)"
+                    android:textSize="14sp"
+                    android:textColor="#666666"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:id="@+id/result2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2)"
+                    android:textSize="14sp"
+                    android:textColor="#666666"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:id="@+id/result3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3)"
+                    android:textSize="14sp"
+                    android:textColor="#666666"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:id="@+id/result4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="4)"
+                    android:textSize="14sp"
+                    android:textColor="#666666" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+</ScrollView>
