@@ -9,6 +9,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.calcroof.databinding.ActivityMainBinding
 import kotlin.math.sqrt
 import kotlin.math.tan
+import kotlin.math.atan
+
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -194,29 +197,36 @@ class MainActivity : AppCompatActivity() {
         val CStr = binding.inputC.text.toString()
         val HStr = binding.inputH.text.toString()
 
-        if (angleStr.isEmpty() || AStr.isEmpty() || CStr.isEmpty() || HStr.isEmpty()) {
+        if (AStr.isEmpty() || CStr.isEmpty() || HStr.isEmpty()) {
             Toast.makeText(this, "Пожалуйста, заполните все поля", Toast.LENGTH_SHORT).show()
             return
         }
 
         try {
-            val angle = angleStr.toDouble()
             val a = AStr.toDouble()
             val c = CStr.toDouble()
             val h = HStr.toDouble()
+
+            // Вычисляем угол
+            val angle: Double = if (angleStr.isNotEmpty()) {
+                // Если угол задан - берем его
+                angleStr.toDouble()
+            } else {
+                // Если не задан - вычисляем через арктангенс
+                Math.toDegrees(atan(h / c ))
+            }
 
             if (angle <= 0 || angle >= 90) {
                 Toast.makeText(this, "Угол должен быть от 0° до 90°", Toast.LENGTH_SHORT).show()
                 return
             }
 
-            val result1 = angle
             val angleInRadians = Math.toRadians(angle)
             val kResult = (a / 2) * tan(angleInRadians)
             val xResult = sqrt((a / 2) * (a / 2) + kResult * kResult)
             val tResult = sqrt(c * c + h * h)
 
-            binding.result1.text = "1) Угол = %.2f°".format(result1)
+            binding.result1.text = "1) Угол = %.2f°".format(angle)
             binding.result2.text = "2) k(2) = %.4f".format(kResult)
             binding.result3.text = "3) x(3) = √(%.4f) = %.4f".format(
                 ((a / 2) * (a / 2) + kResult * kResult), xResult
